@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carol Benson | Exam Request Tool | DPHT 7441 Module 7</title>
+<style>
+:root{--navy:#012D46;--teal:#00778B;--green:#00783C;--red:#9B2226;--panel:#EAF3F5;--row:#F4F7F8;--ink:#1F2A33;--gray:#5B6770;--gold:#8A5F0A;--goldt:#F7F0E1;--bg:#FFFFFF;--line:#B9C4CC;--btn:#012D46;--btntxt:#FFFFFF;--label:#012D46;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--panel:#16323F;--row:#1C2A33;--ink:#E6EEF2;--gray:#A7B6C0;--gold:#E2B864;--goldt:#3A2F17;--bg:#0F1A21;--line:#3C5361;--label:#9FD3DB;--btn:#00778B;--green:#5CC28A;--red:#E07A7F}}
+:root[data-theme="dark"]{--panel:#16323F;--row:#1C2A33;--ink:#E6EEF2;--gray:#A7B6C0;--gold:#E2B864;--goldt:#3A2F17;--bg:#0F1A21;--line:#3C5361;--label:#9FD3DB;--btn:#00778B;--green:#5CC28A;--red:#E07A7F}
+*{box-sizing:border-box}html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#012D46;color:#fff;padding:18px 24px;border-bottom:6px solid #00778B}
+header .k{font-size:12px;font-weight:700;letter-spacing:.06em;color:#8FC7D1;text-transform:uppercase}
+header h1{margin:4px 0 0;font-size:26px}
+main{max-width:1000px;margin:0 auto;padding:20px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--panel);padding:14px 16px;margin-bottom:16px}
+.bar label{font-weight:700;color:var(--label)}
+select,button{font:inherit;font-size:16px;padding:8px 12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+button{background:var(--btn);color:var(--btntxt);border:0;cursor:pointer;font-weight:700}
+button.secondary{background:var(--bg);color:var(--label);border:1px solid var(--label)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.count{margin-left:auto;font-size:18px;font-weight:700;color:var(--label)}
+.region{margin:18px 0 6px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--teal);text-transform:uppercase}
+.item{padding:10px 12px;background:var(--row);margin-bottom:4px}
+.item:nth-child(even){background:var(--panel)}
+.top{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.top input{width:20px;height:20px;margin-top:2px;flex:none}
+.code{font-weight:700;color:var(--label);min-width:40px}
+.item.dis .top{opacity:.45;cursor:not-allowed}
+.opts{display:none;margin:8px 0 2px 32px;gap:16px;flex-wrap:wrap;align-items:center}
+.item.on .opts{display:flex}
+.tag{font-size:13px;color:var(--gray)}
+.note{background:var(--goldt);padding:12px 16px;margin:16px 0}
+.card{border-left:6px solid var(--teal);background:var(--row);padding:12px 16px;margin-bottom:10px}
+.card .t{font-weight:700;color:var(--label)}
+.card .r{margin-top:6px}
+.ok{color:var(--green);font-weight:700}.no{color:var(--red);font-weight:700}
+.hidden{display:none}
+.summary{white-space:pre-wrap;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:12px;font-family:Consolas,monospace;font-size:14px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}.tabs button{background:var(--panel);color:var(--label);border:1px solid var(--line)}.tabs button.act{background:var(--btn);color:var(--btntxt)}
+.chart h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin:18px 0 6px}.chart table{border-collapse:collapse;width:100%}.chart td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}.chart td:first-child{font-weight:700;color:var(--label);width:38%}
+textarea{font:inherit;font-size:15px;width:100%;padding:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.ref{border:1px solid var(--line);margin-bottom:14px}.ref summary{cursor:pointer;padding:10px 14px;background:var(--panel);font-weight:700;color:var(--label)}.ref .chart{padding:4px 14px 12px;max-height:55vh;overflow:auto}
+@media (max-width:600px){header h1{font-size:21px}.count{margin-left:0}.opts{margin-left:0}}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}.tabs button{background:var(--panel);color:var(--label);border:1px solid var(--line)}.tabs button.act{background:var(--btn);color:var(--btntxt)}
+.chart h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin:18px 0 6px}.chart table{border-collapse:collapse;width:100%}.chart td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}.chart td:first-child{font-weight:700;color:var(--label);width:32%}
+.quote{background:var(--panel);padding:12px 16px;font-style:italic;margin:6px 0}
+textarea,input[type=text]{font:inherit;font-size:15px;width:100%;padding:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.field{margin:8px 0}.field label{display:block;font-weight:700;color:var(--label);margin-bottom:4px}
+.rankrow{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:start;margin:6px 0}
+.ref{border:1px solid var(--line);margin-bottom:14px}.ref summary{cursor:pointer;padding:10px 14px;background:var(--panel);font-weight:700;color:var(--label)}.ref .chart{padding:4px 14px 12px;max-height:55vh;overflow:auto}
+.pred{margin:6px 0 2px 32px;display:none}.item.on .pred{display:block}
+</style></head><body>
+<header><div class="k">DPHT 7441 | Module 7 | Sync Session</div><h1>Carol Benson: Exam Request Tool</h1></header>
+<main>
+<div class="tabs"><button id="tChart" class="act">1. Carol&rsquo;s chart</button><button id="tPlan">2. Rank and choose tests</button><button id="tRes">3. Results and decision</button></div>
+<section id="chart" class="chart"></section>
+<section id="plan" class="hidden">
+<details class="ref"><summary>Show Carol&rsquo;s chart while you work</summary><div class="chart refchart"></div></details>
+<div class="bar"><label for="grp">Group</label><select id="grp"><option value="">Choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+<span id="spread" style="font-weight:700;color:var(--gold)">Knee 0/2 &middot; Hip 0/2 &middot; Lumbar or neuro 0/2</span><span class="count" id="count">0 of 8 selected</span></div>
+<div class="region" style="font-size:15px">Step 1. Rank the three possible sources</div>
+<div id="rank"></div>
+<div class="field"><label for="threat">The finding that most threatens your top-ranked source</label><textarea id="threat" rows="2"></textarea></div>
+<div class="field"><label for="change">The one result that would make you change your ranking</label><textarea id="change" rows="2"></textarea></div>
+<div class="region" style="font-size:15px;margin-top:22px">Step 2. Choose 8 tests</div>
+<div class="note">Each pick is one test. Range of motion counts as one test for each region; the myotome screen and the dermatome screen each count as one test. Choose exactly 8: at least 2 from Knee, 2 from Hip, and 2 from Lumbar or Neurological. For each test you choose, write what result would confirm or refute your thinking.</div>
+<div id="menu"></div>
+<div class="bar" style="margin-top:16px"><button id="lock" disabled>Lock our 8 tests</button><span id="status" class="tag"></span></div>
+</section>
+<section id="res" class="hidden">
+<details class="ref"><summary>Show Carol&rsquo;s chart while you work</summary><div class="chart refchart"></div></details>
+<div id="lockedBox"><div class="note">Lock your 8 tests on tab 2 first. Your results appear here.</div></div>
+<div id="resBox" class="hidden">
+<div class="region">Your results</div><div id="resList"></div>
+<p class="tag">These are the only results your group has. Tests you did not request are findings you do not have.</p>
+<div class="region" style="font-size:15px">Your decision</div>
+<div class="field"><label for="src">Our source is</label><select id="src"><option value="">Choose</option><option>Knee</option><option>Hip</option><option>Lumbar</option><option>Unclear</option></select></div>
+<div class="field"><label for="conv">The test that convinced us, and why</label><textarea id="conv" rows="2"></textarea></div>
+<div class="field"><label for="ruled">What we ruled out, and which test ruled it out</label><textarea id="ruled" rows="2"></textarea></div>
+<div class="bar"><button class="secondary" id="copy">Copy our summary</button><span id="copymsg" class="tag"></span></div>
+<div class="summary" id="summary"></div>
+</div>
+</section>
+</main>
+<script>
+const C={"intake": [["Patient Name:", "Carol Benson"], ["DOB:", "08/03/1965  (Age 61)"], ["Sex:", "Female"], ["BMI:", "29"], ["Referring Physician:", "Anita Shah, MD  (Family Medicine)"], ["Physician Diagnosis:", "Right knee pain"], ["ICD-10:", "M25.561"], ["Reason for Referral:", "Evaluate and treat"], ["Duration of Symptoms:", "Approximately 5 months"], ["Past Medical History:", "Hypertension, controlled. Two prior low back pain episodes (2017, 2022), each resolved with physical therapy. No knee injury or surgery"], ["Imaging:", "None"], ["Medications:", "Hydrochlorothiazide; acetaminophen as needed"], ["Occupation:", "Retired elementary school teacher. Volunteers three mornings a week at a food bank: standing, sorting, lifting boxes"], ["Activity:", "Gardens; walked 2 miles with a neighbor most days, now about half a mile"]], "intakeNote": "My mother had a bad knee, so I guess it is my turn.", "ccQuote": "It is right here, in the front and inside of my right knee. It aches going up and down stairs, getting up from a low chair, and after about twenty minutes of walking. Some days the ache runs up the front of my thigh. It grinds a little when I bend it. It has never been swollen, and it does not lock or give way.", "ccElements": [["Location", "Right anteromedial knee (worst); front of the thigh on some days. Nothing below the knee."], ["Onset", "Gradual over about 5 months. First noticed after spring planting. No injury."], ["Quality", "Deep ache; some grinding. No swelling, locking, or giving way. No numbness or tingling."]], "aggs": ["Stairs, up and down", "Rising from a low chair", "Walking more than about 20 minutes", "Getting in and out of the car", "Putting on her right sock and shoe", "Kneeling and squatting in the garden", "Lifting boxes at the food bank (low back tightness)"], "eases": ["Sitting", "Moving around after the morning stiffness", "Acetaminophen"], "day": [["AM", "Whole leg stiff for 30 to 40 minutes, then loosens with moving around."], ["Day", "Worse after a food bank shift or an afternoon in the garden."], ["Night", "Sleeps through. No pain at rest."]], "more": ["Getting in and out of the car is the worst part of my day.", "I have to sit down to put on my right sock now.", "After gardening I sometimes get an ache in my groin. I figured I pulled something.", "My back gets tight after a food bank shift, like it always has. No tingling anywhere.", "Some days the front of my thigh just feels heavy."], "screening": [["Any unexplained weight loss, fevers, or history of cancer?", "No.", "Tumor and infection lowered"], ["Any pain at rest or at night that does not change with position?", "No. I sleep through.", "Mechanical pain"], ["Any change in bladder or bowel control, or numbness in the groin or saddle area?", "No.", "Cauda equina syndrome lowered"], ["Any numbness, tingling, or weakness in the leg?", "No. Just the heavy feeling some days.", "Radicular signs not reported; still needs a physical screen"], ["Has the knee ever been hot, red, or swollen?", "Never.", "Inflammatory or septic joint lowered"], ["Any falls or injuries?", "No.", "Fracture lowered"]], "measures": [["NPRS", "Now 3 \u00b7 Best 1 \u00b7 Worst 6", "0 to 10; higher is worse"], ["LEFS", "41 / 80", "0 to 80; higher is better"], ["PSFS", "Stairs 3 \u00b7 Walking 2 miles 3 \u00b7 Gardening 4  (average 3.3)", "0 to 10 per activity; higher is better"]], "menu": [{"region": "Knee", "items": [["K1", "Knee PROM with overpressure: flexion and extension", "Flexion 135\u00b0 / 135\u00b0, extension 0\u00b0 / 0\u00b0. Overpressure into flexion gives mild anterior knee pressure on both sides; does not reproduce her pain."], ["K2", "Medial joint line palpation", "Non-tender bilaterally."], ["K3", "Pes anserine palpation", "Non-tender bilaterally."], ["K4", "Palpation of the tibiofemoral margins for bony enlargement", "No bony enlargement."], ["K5", "Palpation for warmth", "No warmth."], ["K6", "Stroke test for effusion", "Zero. No effusion."], ["K7", "Lachman test", "Negative bilaterally."], ["K8", "Valgus stress test at 30\u00b0", "Stable and pain-free bilaterally."], ["K9", "McMurray test", "Negative bilaterally."], ["K10", "Patellofemoral crepitus with active flexion and extension", "Retropatellar crepitus on both sides, similar right and left. Pain-free."], ["K11", "Quadriceps MMT", "5/5 and pain-free bilaterally."]]}, {"region": "Hip", "items": [["H1", "Hip PROM: flexion, IR, ER, extension", "Flexion 95\u00b0 / 115\u00b0. IR in 90\u00b0 flexion 15\u00b0 / 30\u00b0; right end-range IR reproduces her anteromedial knee and anterior thigh pain: \u201cThat is my knee pain.\u201d ER 30\u00b0 / 40\u00b0. Extension \u22125\u00b0 / 10\u00b0. Firm end feel."], ["H2", "Scour test with adduction", "Right: reproduces anterior thigh and knee pain, with a groin ache. Left: negative."], ["H3", "FABER test", "Right: limited, groin pain. Left: negative."], ["H4", "Double-leg squat", "Anterior thigh and knee pain at about half depth."], ["H5", "Single-leg squat, right and left", "Right: anterior thigh and knee pain, 5 of 10, at shallow depth, with contralateral pelvic drop and trunk lean. Left: pain-free, level pelvis."], ["H6", "Active hip flexion, supine, for pain", "Pain-free."], ["H7", "Active hip extension, prone, for pain", "Anterior thigh pain on the right."], ["H8", "Thomas test", "Right hip rests 10\u00b0 short of neutral; left reaches neutral."], ["H9", "Hip abductor MMT", "4/5 right, 5/5 left."], ["H10", "Single-limb stance (Trendelenburg)", "Right stance: mild contralateral pelvic drop. Left: level."], ["H11", "Anterior hip palpation", "Mild deep tenderness on the right."]]}, {"region": "Lumbar", "items": [["L1", "Observation for lateral shift", "No lateral shift."], ["L2", "Lumbar AROM with overpressure: flexion and extension", "Flexion limited: fingertips reach mid-shin, and the lumbar spine stays relatively flat while most of the bend comes from the hips. Extension limited to about half of expected, with low back tightness. Firm end feel. No thigh or knee symptoms in either direction."], ["L3", "Repeated extension in lying (x10)", "No change in the location or intensity of her thigh or knee symptoms."], ["L4", "Repeated flexion in standing (x10)", "No change in the location or intensity of her thigh or knee symptoms."], ["L5", "Central PA, L1 to L5", "L1: normal mobility, pain-free. L2: hypomobile, pain-free. L3: hypomobile, local tenderness. L4: hypomobile, local tenderness. L5: normal mobility, pain-free. No thigh or knee symptoms at any level."], ["L6", "Prone instability test", "Negative."], ["L7", "Passive lumbar extension test", "Negative. No low back pain, give, or apprehension."], ["L8", "Milgram test", "Negative. Holds the position for 30 seconds without pain."]]}, {"region": "Neurological", "items": [["N1", "Myotomes, L1 to S2", "Bilaterally: L1\u2013L2 hip flexion 5/5. L2\u2013L4 knee extension 5/5. L4 ankle dorsiflexion 5/5. L5 great toe extension 5/5. S1 ankle eversion 5/5. S1 ankle plantarflexion 5/5. L4\u2013S3 knee flexion 5/5. L5\u2013S2 hip extension 5/5, with anterior thigh discomfort on the right."], ["N2", "Dermatomes, L1 to S2: light touch", "Bilaterally: L1 intact. L2 intact. L3 intact. L4 intact. L5 intact. S1 intact. S2 intact."], ["N3", "Patellar reflex", "2+ and symmetric."], ["N4", "Achilles reflex", "2+ and symmetric."], ["N5", "Prone knee bend", "Knee flexion about 125\u00b0 right, 130\u00b0 left. Anterior thigh stretch on both sides; does not reproduce her symptoms."], ["N6", "Straight leg raise", "80\u00b0 bilaterally. Negative."], ["N7", "Slump test", "Negative."]]}, {"region": "Ankle and foot", "items": [["A1", "Ankle PROM: dorsiflexion, plantarflexion, inversion, eversion", "Dorsiflexion right 7\u00b0 knee extended and 16\u00b0 knee flexed; left 10\u00b0 and 20\u00b0. Plantarflexion 50\u00b0, inversion 35\u00b0, eversion 15\u00b0, bilaterally. Pain-free."], ["A2", "Dorsiflexion lunge", "9 cm / 11 cm."], ["A3", "Silfverski\u00f6ld test", "Right: 7\u00b0 with the knee extended, increasing to 16\u00b0 with the knee flexed. Left: 10\u00b0 to 20\u00b0."], ["A4", "First MTP extension", "70\u00b0 bilaterally. Pain-free."], ["A5", "Navicular drop", "7 mm / 7 mm."], ["A6", "Foot Posture Index (FPI-6)", "+2 / +2."], ["A7", "Single-leg heel raise", "16 repetitions right, 23 left. Right stops with calf fatigue. Pain-free."], ["A8", "Posterior talar glide", "Normal mobility bilaterally. Pain-free."]]}, {"region": "Other", "items": [["O1", "SIJ distraction test", "Negative."], ["O2", "Thigh thrust test", "Negative."], ["O3", "SIJ compression test", "Negative."], ["O4", "Sacral thrust test", "Negative."], ["O5", "Calf palpation for tenderness and swelling", "No tenderness or swelling."]]}], "ttr": [["Knee: tibiofemoral distraction and patellar glides, 3 x 30 seconds", "Step-down pain 5 \u2192 5 of 10. Squat unchanged."], ["Lumbar: repeated extension in lying, 2 x 10, then PA at L3\u20134", "Thigh and knee symptoms unchanged. Back feels looser."], ["Hip: long-axis distraction, 3 x 30 seconds", "IR 15\u00b0 \u2192 21\u00b0. Step-down pain 5 \u2192 2 of 10. Squat deeper before pain. Sock on standing, with a hand on the wall."]], "reassess": [["LEFS", "41", "55", "+14", "MDC 9 \u00b7 MCID 9", "Real and meaningful"], ["PSFS, average", "3.3", "6.0", "+2.7", "MDC ~2 \u00b7 MCID ~2", "Real and meaningful"], ["NPRS, worst", "6", "3", "\u22123", "MDC ~2.3 \u00b7 MCID ~2", "Real and meaningful"], ["Hip IR, right", "15\u00b0", "22\u00b0", "+7\u00b0", "Not in course sources", "Impairment trend: improving"], ["Walking", "Half a mile", "1.5 miles", "\u2014", "Her goal: 2 miles", "Approaching her goal"]]};
+const all={};C.menu.forEach(r=>r.items.forEach(i=>all[i[0]]={name:i[1],result:i[2],region:r.region}));
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+// chart
+(function(){const tr=r=>'<tr><td>'+esc(r[0].replace(':',''))+'</td><td>'+esc(r[1])+'</td></tr>';
+ let h='<h3>New patient intake</h3><table>'+C.intake.map(tr).join('')+'</table>';
+ h+='<div class="quote">Patient note: &ldquo;'+esc(C.intakeNote)+'&rdquo;</div>';
+ h+='<h3>Chief complaint, in her words</h3><div class="quote">&ldquo;'+esc(C.ccQuote)+'&rdquo;</div>';
+ h+='<h3>Aggravating</h3><table>'+C.aggs.map(a=>'<tr><td colspan="2" style="font-weight:400">'+esc(a)+'</td></tr>').join('')+'</table>';
+ h+='<h3>Easing</h3><table>'+C.eases.map(a=>'<tr><td colspan="2" style="font-weight:400">'+esc(a)+'</td></tr>').join('')+'</table>';
+ h+='<h3>24-hour pattern</h3><table>'+C.day.map(d=>tr([d[0]==='AM'?'Morning':(d[0]==='Day'?'During the day':'Night'),d[1]])).join('')+'</table>';
+ h+='<h3>More history, in her words</h3>'+C.more.map(q=>'<div class="quote">&ldquo;'+esc(q)+'&rdquo;</div>').join('');
+ h+='<h3>Screening questions</h3><table>'+C.screening.map(r=>tr([r[0],r[1]])).join('')+'</table>';
+ h+='<h3>Baseline outcome measures</h3><table>'+C.measures.map(m=>tr([m[0],m[1]+'  ('+m[2]+')'])).join('')+'</table>';
+ document.getElementById('chart').innerHTML=h;document.querySelectorAll('.refchart').forEach(el=>el.innerHTML=h);})();
+// tabs
+const tabs={tChart:'chart',tPlan:'plan',tRes:'res'};
+Object.keys(tabs).forEach(t=>document.getElementById(t).addEventListener('click',()=>{Object.keys(tabs).forEach(u=>{document.getElementById(u).classList.toggle('act',u===t);document.getElementById(tabs[u]).classList.toggle('hidden',u!==t);});}));
+// ranking
+const SRC=['Knee','Hip','Lumbar'];
+document.getElementById('rank').innerHTML=[1,2,3].map(n=>'<div class="rankrow"><select data-rank="'+n+'"><option value="">Rank '+n+'</option>'+SRC.map(s=>'<option>'+s+'</option>').join('')+'</select><input type="text" data-reason="'+n+'" placeholder="One reason from her history or measures"></div>').join('');
+// menu
+let chosen=[];const pred={};
+const menuEl=document.getElementById('menu');
+C.menu.forEach(r=>{const h=document.createElement('div');h.className='region';h.textContent=r.region+' ('+r.items.length+')';menuEl.appendChild(h);const w=document.createElement('div');
+ r.items.forEach(i=>{const d=document.createElement('div');d.className='item';d.id='it_'+i[0];d.innerHTML='<label class="top"><input type="checkbox" value="'+i[0]+'"><span class="code">'+i[0]+'</span><span>'+esc(i[1])+'</span></label><div class="pred"><input type="text" data-pred="'+i[0]+'" placeholder="What result would confirm or refute your thinking?"></div>';w.appendChild(d);});menuEl.appendChild(w);});
+function rankVals(){return [1,2,3].map(n=>({s:document.querySelector('[data-rank="'+n+'"]').value,r:document.querySelector('[data-reason="'+n+'"]').value.trim()}));}
+function refresh(){const n=chosen.length;document.getElementById('count').textContent=n+' of 8 selected';
+ document.querySelectorAll('#menu .item').forEach(d=>{const c=d.id.slice(3);const on=chosen.includes(c);d.classList.toggle('on',on);const cb=d.querySelector('input[type=checkbox]');const dis=!on&&n>=8;cb.disabled=dis;d.classList.toggle('dis',dis);});
+ const cnt=r=>chosen.filter(k=>all[k].region===r).length;const kn=cnt('Knee'),hp=cnt('Hip'),lb=cnt('Lumbar')+cnt('Neurological');const ok=kn>=2&&hp>=2&&lb>=2;
+ const sp=document.getElementById('spread');sp.textContent='Knee '+kn+'/2 \u00B7 Hip '+hp+'/2 \u00B7 Lumbar or neuro '+lb+'/2'+(ok?'  \u2713 spread rule met':'');sp.style.color=ok?'var(--green)':'var(--gold)';
+ const rv=rankVals();const rankOk=rv.every(x=>x.s&&x.r)&&new Set(rv.map(x=>x.s)).size===3;const predOk=chosen.every(c=>(pred[c]||'').trim());
+ const msg=[];if(!document.getElementById('grp').value)msg.push('choose your group');if(!rankOk)msg.push('rank all three sources, each once, with a reason');if(!document.getElementById('threat').value.trim())msg.push('name the threatening finding');if(!document.getElementById('change').value.trim())msg.push('name the result that would change your ranking');if(n<8)msg.push('choose '+(8-n)+' more test'+(8-n===1?'':'s'));if(n&&!ok)msg.push('meet the spread rule');if(n&&!predOk)msg.push('write a prediction for every test');
+ document.getElementById('status').textContent=msg.length?'To lock: '+msg.join(', '):'Ready to lock';
+ document.getElementById('lock').disabled=msg.length>0;}
+menuEl.addEventListener('change',e=>{const t=e.target;if(t.type!=='checkbox')return;const v=t.value;if(t.checked){if(chosen.length<8)chosen.push(v);else t.checked=false;}else chosen=chosen.filter(x=>x!==v);refresh();});
+document.getElementById('plan').addEventListener('input',e=>{const t=e.target;if(t.dataset&&t.dataset.pred)pred[t.dataset.pred]=t.value;refresh();});
+document.getElementById('plan').addEventListener('change',refresh);
+let armed=false;
+document.getElementById('lock').addEventListener('click',()=>{const b=document.getElementById('lock');
+ if(!armed){armed=true;b.textContent='Click again to confirm. You cannot change your tests after this.';setTimeout(()=>{armed=false;b.textContent='Lock our 8 tests';},6000);return;}
+ const st={g:document.getElementById('grp').value,chosen,pred,rank:rankVals(),threat:document.getElementById('threat').value.trim(),change:document.getElementById('change').value.trim(),revealed:false};save(st);showLocked(st);});
+function save(st){try{localStorage.setItem('carol_exam2',JSON.stringify(st))}catch(e){}}
+function showLocked(st){document.getElementById('tPlan').disabled=true;document.getElementById('tRes').click();
+ document.getElementById('lockedBox').innerHTML='<div class="bar"><span style="font-weight:700;color:var(--label)">Group '+st.g+': tests locked</span>'+(st.revealed?'':'<button id="reveal">Reveal our results</button>')+'</div>'+(st.revealed?'':'<div class="note">Reveal your results at the start of Breakout 2, after the break.</div>')+(st.revealed?'':st.chosen.map(k=>'<div class="card"><div class="t">'+k+'  '+esc(all[k].name)+'</div><div class="r tag">Our prediction: '+esc(st.pred[k])+'</div></div>').join(''));
+ if(st.revealed)showRes(st);else document.getElementById('reveal').addEventListener('click',()=>{st.revealed=true;save(st);showLocked(st);});}
+function showRes(st){document.getElementById('resBox').classList.remove('hidden');
+ document.getElementById('resList').innerHTML=st.chosen.map(k=>'<div class="card"><div class="t">'+k+'  '+esc(all[k].name)+'</div><div class="r">'+esc(all[k].result)+'</div><div class="r tag">Our prediction: '+esc(st.pred[k])+'</div></div>').join('');
+ ['src','conv','ruled'].forEach(id=>{const el=document.getElementById(id);if(st[id])el.value=st[id];el.addEventListener('input',()=>{st[id]=el.value;save(st);sum(st);});el.addEventListener('change',()=>{st[id]=el.value;save(st);sum(st);});});sum(st);}
+function sum(st){const one=x=>String(x||'').replace(/\s+/g,' ').trim();document.getElementById('summary').textContent='Group '+st.g+' | Source: '+(st.src||'(not chosen)')+'\nRanked: '+st.rank.map(x=>x.s).join(' > ')+'\nTests: '+st.chosen.join(', ')+'\nConvinced by: '+one(st.conv)+'\nRuled out: '+one(st.ruled);}
+document.getElementById('copy').addEventListener('click',()=>{const tx=document.getElementById('summary').textContent;const m=document.getElementById('copymsg');
+ const sel=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('summary'));const s=window.getSelection();s.removeAllRanges();s.addRange(r);m.textContent='Text selected. Press Ctrl+C or Cmd+C to copy.';};
+ if(navigator.clipboard)navigator.clipboard.writeText(tx).then(()=>{m.textContent='Copied. Paste it into the Zoom chat.';},sel);else sel();});
+if(location.search.indexOf('reset')>-1){try{localStorage.removeItem('carol_exam2')}catch(e){}}
+try{const st=JSON.parse(localStorage.getItem('carol_exam2')||'null');if(st&&st.chosen&&st.chosen.length===8)showLocked(st);}catch(e){}
+refresh();
+</script></body></html>
